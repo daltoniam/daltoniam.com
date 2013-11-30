@@ -1,0 +1,284 @@
+@import 'bootstrap';
+@import 'animate';
+@import 'font-awesome';
+
+$box-height: 720px;
+$icon-size: 320px;
+$icon-font: 48px;
+$header-font: 72px;
+
+$desktop-box-height: 320px;
+$desktop-icon-size: 108px;
+$desktop-icon-font: 24px;
+$desktop-header-font: 48px;
+body
+{
+	/*background-color: #ECEADD;*/
+	background-color: #ECEADD;
+	margin: 0; padding: 0;
+}
+/*@media (min-width: 1200px) {
+  .container 
+  {
+    max-width: 800px; 
+  }
+}*/
+#app
+{
+	margin: auto auto;
+	text-align: center;
+}
+.mainContent
+{
+	margin-top: 10px;
+}
+h1, h2, h3
+{
+	text-align: left;
+}
+p, li, ol
+{
+	text-align: left;
+}
+a
+{
+	text-decoration: none !important;
+}
+.anchorText
+{
+	color: #428BCA;
+	cursor: pointer;
+	text-decoration: none !important;
+	&:hover {
+		color: darken(#428BCA, 20%); 
+	}
+}
+img
+{
+	border-radius: 50%;
+}
+button, .btn-default
+{
+	font-size: 22px;
+	float: left;
+	color: #fff;
+	background: #C0392B;
+	&:hover {
+		background: darken(#C0392B, 20%); 
+		color: #fff;
+	}
+}
+.mainHeader
+{
+	text-align: center;
+	font-size: $header-font;
+	@media (min-width: $screen-sm-max) {
+		font-size: $desktop-header-font;
+		text-align: left;
+	}
+}
+.aboutText
+{
+	text-align: justify;
+	margin-top: 20px;
+	font-size: 48px;
+	@media (min-width: $screen-sm-max) {
+		font-size: 18px;
+		text-align: left;
+	}
+}
+.aboutPad
+{
+	margin-bottom: 850px;
+	@media (min-width: $screen-sm-max) {
+		margin-bottom: 0px;
+	}
+}
+.mainImg
+{
+	margin-top: 30px;
+}
+.circle
+{
+	width:  $box-height - 80;/*240px;*/
+	height: $box-height - 80;
+	@media (min-width: $screen-sm-max) {
+		width:  $desktop-box-height - 80;/*240px;*/
+		height: $desktop-box-height - 80;
+	}
+	border-radius: 50%;
+	text-align: center;
+	margin: auto auto;
+	/*margin-top: 20px;
+	line-height: 100px;
+	text-align: center;
+	background: #000;*/
+}
+.bubble
+{
+	height: $box-height;
+	@media (min-width: $screen-sm-max) {
+		height: $desktop-box-height;
+	}
+}
+
+/* circle colors */
+.circle
+{
+}
+.githubCircle
+{
+	background: #F3F3F3;
+	&:hover {
+		background: darken(#F3F3F3, 20%); 
+  	}
+}
+.twitterCircle
+{
+	background: #00ACEE;
+	&:hover {
+		background: darken(#00ACEE, 20%); 
+	}
+}
+.linkedinCircle
+{
+	background: #F1C40F;
+	&:hover {
+		background: darken(#F1C40F, 20%); 
+	}
+}
+.stackCircle
+{
+	background: #e67e22;
+	&:hover {
+		background: darken(#e67e22, 20%); 
+	}
+}
+.resumeCircle
+{
+	background: #C0392B;
+	&:hover {
+		background: darken(#C0392B, 20%); 
+	}
+}
+.blogCircle
+{
+	background: #8e44ad;
+	&:hover {
+		background: darken(#8e44ad, 20%); 
+	}
+}
+.aboutCircle
+{
+	background: #16a085;
+	&:hover {
+		background: darken(#16a085, 20%); 
+	}
+}
+.projectCircle
+{
+	background: #2c3e50;
+	&:hover {
+		background: darken(#2c3e50, 20%); 
+	}
+}
+.contactCircle
+{
+	background: #7f8c8d;
+	&:hover {
+		background: darken(#7f8c8d, 20%); 
+	}
+}
+.dateCircle
+{
+	background: #3498db;
+}
+
+/* icons */
+.icon
+{
+	color: #FFF;
+	font-size: $icon-size;
+	margin-top: $box-height/6;
+	@media (min-width: $screen-sm-max) {
+		font-size: $desktop-icon-size;
+		margin-top: $desktop-box-height/6;
+	}
+}
+.iconAlt
+{
+	color: #000;
+}
+.iconText
+{
+	color: #FFF;
+	margin: auto auto;
+	text-align: center;
+	font-size: $icon-font;
+	@media (min-width: $screen-sm-max) {
+		font-size: $desktop-icon-font;
+	}
+}
+.iconTextAlt
+{
+	color: #000;
+}
+.backArrow
+{
+	color: #000;
+	text-align: left;
+	float: left;
+	margin-top: 90px;
+	/*position: absolute;
+	margin-top: 30px;
+	margin-right: 200px;
+	width: 200px;*/
+	font-size: $icon-font*2;
+	@media (min-width: $screen-sm-max) {
+		font-size: $desktop-icon-font*2;
+	}
+}
+.bubbleHeaderMain
+{
+	margin-top: 30px;
+}
+/*blog stuff*/
+.blogHeaderText
+{
+	margin-top: 20px;
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+.postHeader
+{
+	margin-top: 80px;
+	height: 270px;
+}
+.postMain
+{
+	/*margin-top: 110px;*/
+}
+.postContent
+{
+	/*margin-top: 70px;*/
+}
+.postTitle
+{
+	text-align: center;
+	font-weight: bold;
+	font-size: $header-font;
+	@media (min-width: $screen-sm-max) {
+		font-size: $desktop-header-font;
+		text-align: left;
+	}
+}
+.postText
+{
+	font-size: 18px;
+}
+.secondPostText
+{
+	font-size: 16px;
+	color: #666;
+
+}
