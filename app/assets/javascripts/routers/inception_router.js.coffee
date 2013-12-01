@@ -6,6 +6,9 @@ class Daltoniam.Routers.InceptionRouter extends Backbone.Router
     'blog'            : 'getBlog'
     'blog/:param'     : 'getPost'
     'resume'          : 'getResume'
+    'about'           : 'getAbout'
+    'project'         : 'getProject'
+    'projects'        : 'getProject'
 
   getHome:(param) ->
     console.log("going home param: " + param)
@@ -16,9 +19,16 @@ class Daltoniam.Routers.InceptionRouter extends Backbone.Router
     blogView = new Daltoniam.Views.BlogView()
 
   getPost: (param) ->
-    console.log("get blog post #{param}")
     blogView = new Daltoniam.Views.BlogPostView({id: param})
 
   getResume: ->
     resumeView = new Daltoniam.Views.ResumeView()
     resumeView.render()
+  
+  getAbout: ->
+    aboutView = new Daltoniam.Views.AboutView()
+    aboutView.render()
+
+  getProject: ->
+    projectView = new Daltoniam.Views.ProjectView()
+    projectView.render()

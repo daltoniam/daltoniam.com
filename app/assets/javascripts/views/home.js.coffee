@@ -9,6 +9,7 @@ class Daltoniam.Views.HomeView extends Backbone.View
     "click .projectCircle" : "goProject"
 
   initialize: (param) ->
+    $(@el).unbind("click")
     @returnParam = param['name']
 
   render: ->
@@ -17,10 +18,17 @@ class Daltoniam.Views.HomeView extends Backbone.View
       $('.blogBubble').removeClass('bounceInUp')
     else if @returnParam == 'resume'
       $('.resumeBubble').removeClass('bounceInRight')
+    else if @returnParam == 'about'
+      $('.aboutBubble').removeClass('bounceInLeft')
+    else if @returnParam == 'project'
+      $('.projectBubble').removeClass('bounceInLeft')
 
   goBlog: ->
     $('.blogCircle').css("background": "#8e44ad")
     $('.resumeBubble').removeClass('bounceInRight').addClass('bounceOutRight')
+    $('.aboutBubble').removeClass('bounceInLeft').addClass('bounceOutLeft')
+    $('.projectBubble').removeClass('bounceInLeft').addClass('bounceOutLeft')
+
     $('.bounceInRight').removeClass('bounceInRight').addClass('bounceOutRight')
     $('.bounceInLeft').removeClass('bounceInLeft').addClass('bounceOutLeft')
     $('.githubBubble').removeClass('bounceInUp').addClass('bounceOutDown')
@@ -38,6 +46,9 @@ class Daltoniam.Views.HomeView extends Backbone.View
   goResume: ->
     $('.resumeCircle').css("background": "#C0392B")
     $('.blogBubble').removeClass('bounceInUp').addClass('bounceOutUp')
+    $('.aboutBubble').removeClass('bounceInLeft').addClass('bounceOutLeft')
+    $('.projectBubble').removeClass('bounceInLeft').addClass('bounceOutLeft')
+    
     $('.mainTextBody').removeClass('bounceInRight').addClass('bounceOutRight')
     $('.twitterBubble').removeClass('bounceInRight').addClass('bounceOutRight')
     $('.contactBubble').removeClass('bounceInRight').addClass('bounceOutRight')
@@ -56,7 +67,12 @@ class Daltoniam.Views.HomeView extends Backbone.View
     ).transition(x: "-#{width}",complete: -> inceptionRouter.navigate("resume", trigger: true))
 
   goAbout: ->
+    console.log "about is done"
     $('.aboutCircle').css("background": "#16a085")
+    $('.blogBubble').removeClass('bounceInUp').addClass('bounceOutUp')
+    $('.resumeBubble').removeClass('bounceInRight').addClass('bounceOutRight')
+    $('.projectBubble').removeClass('bounceInLeft').addClass('bounceOutLeft')
+
     $('.bounceInRight').removeClass('bounceInRight').addClass('bounceOutRight')
     $('.bounceInUp').removeClass('bounceInUp').addClass('bounceOutUp')
     $('.projectBubble').removeClass('bounceInLeft').addClass('bounceOutLeft')
@@ -73,13 +89,17 @@ class Daltoniam.Views.HomeView extends Backbone.View
 
   goProject: ->
     $('.projectCircle').css("background": "#2c3e50")
+    $('.aboutBubble').removeClass('bounceInLeft').addClass('bounceOutLeft')
+    $('.blogBubble').removeClass('bounceInUp').addClass('bounceOutUp')
+    $('.resumeBubble').removeClass('bounceInRight').addClass('bounceOutRight')
+
     $('.bounceInRight').removeClass('bounceInRight').addClass('bounceOutRight')
     $('.bounceInUp').removeClass('bounceInUp').addClass('bounceOutUp')
     $('.aboutBubble').removeClass('bounceInLeft').addClass('bounceOutLeft')
     $('.stackBubble').removeClass('bounceInLeft').addClass('bounceOutLeft')
     $('.bounceInDown').removeClass('bounceInDown').addClass('bounceOutUp')
-    height = $('.projectBubble').height() - 20
-    height = height*2
+    height = $('.projectBubble').height()
+    height = height*2 - 20
     pixelStr = "-#{height}"
     delayTime = 500
     $('.projectCircle').removeClass('bounceInRight').transition(

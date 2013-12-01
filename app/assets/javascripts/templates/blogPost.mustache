@@ -1,2 +1,25 @@
-<div class="animated bounceInRight posts">
+<div class="animated bounceInRight blogPostContent">
+	<div class="row">
+		<div class="bubble blogPostMain blogPostBubble col-md-4">
+			<i class="fa fa-arrow-left backArrow animated fadeInRight"></i>
+			<div class="circle dateCircle">
+				<i class="fa fa-calendar-o icon"></i>
+				<p class="iconText">{{time}}</p>
+			</div>
+		</div>
+		<div class="blogPostHeader col-md-8">
+			<p class="blogPostTitle">{{title}}</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="postContent col-md-12" id="{{id}}">
+			<div class="postText">{{& text}}</div>
+		</div>
+	</div>
+	</div>
+	<div class="row">
+		<div class="commentContent col-md-12">
+			<p class="postTitle">Comments</p>
+		</div>
+	</div>
 </div>

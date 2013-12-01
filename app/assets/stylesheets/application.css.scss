@@ -6,11 +6,13 @@ $box-height: 720px;
 $icon-size: 320px;
 $icon-font: 48px;
 $header-font: 72px;
+$post-header-font: 98px;
 
 $desktop-box-height: 320px;
 $desktop-icon-size: 108px;
 $desktop-icon-font: 24px;
 $desktop-header-font: 48px;
+$desktop-post-header-font: 60px;
 body
 {
 	/*background-color: #ECEADD;*/
@@ -46,6 +48,7 @@ a
 }
 .anchorText
 {
+	text-align: left;
 	color: #428BCA;
 	cursor: pointer;
 	text-decoration: none !important;
@@ -55,7 +58,6 @@ a
 }
 img
 {
-	border-radius: 50%;
 }
 button, .btn-default
 {
@@ -116,6 +118,7 @@ button, .btn-default
 }
 .bubble
 {
+	border-radius: 50%;
 	height: $box-height;
 	@media (min-width: $screen-sm-max) {
 		height: $desktop-box-height;
@@ -274,11 +277,50 @@ button, .btn-default
 }
 .postText
 {
-	font-size: 18px;
+	font-size: 20px;
+	line-height: 1.5;
+	font-weight: 200;
 }
 .secondPostText
 {
 	font-size: 16px;
 	color: #666;
 
+}
+.blogPostContent
+{
+	margin-top: 30px;
+}
+.blogPostHeader
+{
+	/*margin-top: 80px;
+	margin-bottom: 10px;*/
+	/*line-height: 230px;*/
+	min-height: 230px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.blogPostTitle
+{
+	text-align: center;
+	font-weight: bold;
+	font-size: $post-header-font;
+	@media (min-width: $screen-sm-max) {
+		font-size: $desktop-post-header-font;
+		text-align: left;
+	}
+}
+.blogPostBubble
+{
+	height: 270px;
+}
+
+/* about page */
+.aboutImg
+{
+	float: left;
+}
+.bottomPad
+{
+	margin-bottom: 70px;
 }

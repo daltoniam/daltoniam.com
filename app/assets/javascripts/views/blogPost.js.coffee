@@ -2,8 +2,8 @@ class Daltoniam.Views.BlogPostView extends Backbone.View
   template: HoganTemplates['blogPost']
   el: "#app"
 
-  #events: 
-  #  "click .blogMain" : "goHome"
+  events: 
+    "click .blogPostMain" : "goHome"
 
   initialize: (param) ->
     @model = new Daltoniam.Models.Post(param)
@@ -11,9 +11,14 @@ class Daltoniam.Views.BlogPostView extends Backbone.View
     @model.fetch(reset: true) #success: -> render()
 
   render: ->
-    console.log("render the blog post")
-    console.dir(@model)
-    console.log("val: #{@model.text}")
-    @$el.html @template.render()
-    post = new Daltoniam.Views.PostView(model: @model)
-    $('.posts').append post.render()
+    @$el.html @template.render(@model.attributes)
+    height = $('.blogPostTitle').height()
+    if height < 100
+       $('.blogPostTitle').css("margin-top", "80px")
+    else if height < 200
+       $('.blogPostTitle').css("margin-top", "40px")
+
+  goHome: ->
+    $('.backArrow').removeClass('fadeInRight').addClass('fadeOutRight')
+    $(".blogPostContent").removeClass("bounceInRight").addClass('bounceOutRight')
+    $('.blogPostContent').one('webkitAnimationEnd mozAnimationEnd oAnimationEnd animationEnd', () -> inceptionRouter.navigate("blog", trigger: true))

@@ -10,6 +10,5 @@ class Daltoniam.Views.PostView extends Backbone.View
 
   goPost: ->
     id = $(".postContent").attr("id")
-    console.log("got an id: #{id}")
     $(".blogContent").addClass('animated bounceOutLeft')
-    inceptionRouter.navigate("blog/#{id}", trigger: true)
+    $('.blogContent').one('webkitAnimationEnd mozAnimationEnd oAnimationEnd animationEnd', () -> inceptionRouter.navigate("blog/#{id}", trigger: true))
