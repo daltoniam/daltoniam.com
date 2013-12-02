@@ -7,7 +7,12 @@ Daltoniam::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
   api version: 1 do
-    resources :posts
+    resources :sessions
+    delete "sessions" => "sessions#destroy"
+    resources :users
+    resources :posts do
+      resources :comments
+    end
   end
   
   constraints :format => "html" do

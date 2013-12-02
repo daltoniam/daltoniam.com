@@ -1,6 +1,7 @@
 @import 'bootstrap';
 @import 'animate';
 @import 'font-awesome';
+@import 'medium-editor';
 
 $box-height: 720px;
 $icon-size: 320px;
@@ -59,7 +60,7 @@ a
 img
 {
 }
-button, .btn-default
+.downloadButton
 {
 	font-size: 22px;
 	float: left;
@@ -313,6 +314,23 @@ button, .btn-default
 .blogPostBubble
 {
 	height: 270px;
+}
+.signInContent
+{
+	background-color: #FFF;
+}
+.modal-content
+{
+	text-align: left;
+}
+.editable
+{
+	height: 300px;
+	background: #fff;
+}
+.signout
+{
+	float: right;
 }
 
 /* about page */

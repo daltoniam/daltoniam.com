@@ -7,6 +7,9 @@
 #= require bootstrap
 #= require_tree .
 #= require lib/date
+#= require lib/medium-editor
+#= require lib/markdown_dom_parser
+#= require lib/html2markdown
 
 $(document).ready ->
   window.inceptionRouter = new Daltoniam.Routers.InceptionRouter()
