@@ -20,6 +20,7 @@ gem 'will_paginate'
 gem 'active_model_serializers'
 gem 'foreman'
 gem 'font-awesome-sass'
+gem 'puma'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -27,7 +28,9 @@ group :doc do
 end
 
 group :development do
+  gem 'capistrano-rails', '~> 1.1.0'
   gem 'capistrano'
+  gem 'rvm1-capistrano3', require: false
 end
 
 group :development, :test do
