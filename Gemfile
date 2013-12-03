@@ -31,6 +31,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.1.0'
   gem 'capistrano'
   gem 'rvm1-capistrano3', require: false
+  gem 'capistrano3-puma'
 end
 
 group :development, :test do
