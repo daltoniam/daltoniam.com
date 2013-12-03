@@ -1,0 +1,20 @@
+<div class="newPostContent">
+	<div class="row">
+		<div class="col-md-12">
+			<h3>New Post</h3>
+			<form role="form" id="newPostForm">
+				<div class="form-group">
+      				<input type="text" class="form-control" value="{{title}}" name="post[title]" placeholder="Title" autofocus />
+    			</div>
+				<div class="form-group">
+					<div class="form-control editable" id="previewBox" data-placeholder="Type the index preview...">{{& preview}}</div>
+				</div>
+				<div class="form-group">
+					<div class="form-control editable" id="contentBox" data-placeholder="Type your post...">{{& text}}</div>
+				</div>
+				<button type="submit" class="btn btn-default aboutImg createBtn">Create Post</button>
+				<p class='postText'><span class='anchorText rightLink cancelLink'>Cancel</span></p>
+			</form>
+		</div>
+	</div>
+</div>

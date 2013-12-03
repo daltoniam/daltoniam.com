@@ -2,18 +2,21 @@
 @import 'animate';
 @import 'font-awesome';
 @import 'medium-editor';
+@import 'medium-editor-images-plugin';
 
 $box-height: 720px;
 $icon-size: 320px;
 $icon-font: 48px;
 $header-font: 72px;
 $post-header-font: 98px;
+$text-font-size: 50px;
 
 $desktop-box-height: 320px;
 $desktop-icon-size: 108px;
 $desktop-icon-font: 24px;
 $desktop-header-font: 48px;
 $desktop-post-header-font: 60px;
+$desktop-text-font-size: 20px;
 body
 {
 	/*background-color: #ECEADD;*/
@@ -39,6 +42,18 @@ h1, h2, h3
 {
 	text-align: left;
 }
+h2
+{
+	@media (max-width: $screen-sm-max) {
+		font-size: 60px;
+	}
+}
+h3
+{
+	@media (max-width: $screen-sm-max) {
+		font-size: 48px;
+	}
+}
 p, li, ol
 {
 	text-align: left;
@@ -56,9 +71,6 @@ a
 	&:hover {
 		color: darken(#428BCA, 20%); 
 	}
-}
-img
-{
 }
 .downloadButton
 {
@@ -237,25 +249,33 @@ img
 	margin-top: 30px;
 	margin-right: 200px;
 	width: 200px;*/
+	margin-bottom: 800px;
 	font-size: $icon-font*2;
 	@media (min-width: $screen-sm-max) {
 		font-size: $desktop-icon-font*2;
+		margin-bottom: 0px;
 	}
 }
 .bubbleHeaderMain
 {
 	margin-top: 30px;
 }
+
 /*blog stuff*/
 .blogHeaderText
 {
+	font-size: $text-font-size;
+	@media (min-width: $screen-sm-max) {
+		font-size: $desktop-text-font-size;
+	}
 	margin-top: 20px;
-	font-size: 20px;
 	margin-bottom: 20px;
 }
 .postHeader
 {
-	margin-top: 80px;
+	@media (min-width: $screen-sm-max) {
+		margin-top: 80px;
+	}
 	height: 270px;
 }
 .postMain
@@ -278,13 +298,19 @@ img
 }
 .postText
 {
-	font-size: 20px;
+	font-size: $text-font-size;
 	line-height: 1.5;
 	font-weight: 200;
+	@media (min-width: $screen-sm-max) {
+		font-size: $desktop-text-font-size;
+	}
 }
 .secondPostText
 {
-	font-size: 16px;
+	font-size: $text-font-size - 8;
+	@media (min-width: $screen-sm-max) {
+		font-size: $desktop-text-font-size - 4;
+	}
 	color: #666;
 
 }
@@ -327,10 +353,34 @@ img
 {
 	height: 300px;
 	background: #fff;
+	overflow: scroll;
+}
+#previewBox
+{
+	height: 200px;
+}
+#contentBox
+{
+	height: 600px;
+}
+.mediumImages-addImage
+{
+	/* simple hack to get add image link to show in line */
+	margin: 0 0 0 0px;
 }
 .signout
 {
 	float: right;
+}
+.rightLink
+{
+	float: right;
+}
+.dividerLine
+{
+	color: #bdc3c7;
+    background: #bdc3c7; 
+	height: 0.5px;
 }
 
 /* about page */

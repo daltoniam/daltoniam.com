@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+
+  
 	#index action
 	def index
 		@all = Post.paginate(:page => params[:page])
@@ -34,6 +36,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :text)
+    params.require(:post).permit(:title, :text, :preview)
   end
 end
