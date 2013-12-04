@@ -5,6 +5,8 @@ class Daltoniam.Views.NewPostView extends Backbone.View
   events: 
     "click .cancelLink"  : "goHome"
     'submit #newPostForm': 'addPost'
+    "click .signin" : "goSignin"
+    'submit #signinForm'   : 'register'
 
   initialize: (attribs) ->
     $(@el).unbind("click")
@@ -21,6 +23,9 @@ class Daltoniam.Views.NewPostView extends Backbone.View
       $(".mainHeader").html("Edit Post")
     else
       @$el.html @template.render()
+      userRole = $.cookie('role')
+      if not userRole
+        $('.mainHeader').append "<p class='postText'><span class='anchorText signin'>Sign in</span></p>"
     editor = new MediumEditor('.editable', buttons: ['bold','italic','underline','anchor','header1','header2','quote','pre','unorderedlist'])
     #$('.editable').mediumImages(uploadScript: '/1/upload') need to create a route for uploading images
 
@@ -51,3 +56,24 @@ class Daltoniam.Views.NewPostView extends Backbone.View
       inceptionRouter.navigate("blog/#{@model.attributes.id}", trigger: true)
     else
       inceptionRouter.navigate("blog", trigger: true)
+
+  goSignin: ->
+    $('#signInModal').modal('show')
+
+  register: (e) ->
+    e.preventDefault()
+    $.post('/1/sessions', @$('#signinForm').serialize())
+      .done((data) =>
+        this.goLogin(data)
+        $('#signInModal').modal('hide')
+
+      )
+      .fail((data) =>
+          $('#alert-messages-signup').html('<div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <p>Error: Invalid username or password</p>
+        </div>')
+      )
+
+  goLogin: (data) ->
+    $.cookie('role', data.response.role)

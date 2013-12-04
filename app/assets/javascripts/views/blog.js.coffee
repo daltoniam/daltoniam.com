@@ -52,3 +52,6 @@ class Daltoniam.Views.BlogView extends Backbone.View
     height = $('.blogMain').height() - 20
     pixelStr = "#{height}"
     $('.blogMain').transition(x: "#{width}", delay: 600).transition(y: pixelStr, complete: -> inceptionRouter.navigate("home/blog", trigger: true))
+
+
+
