@@ -7,6 +7,7 @@ class Daltoniam.Views.NewPostView extends Backbone.View
     'submit #newPostForm': 'addPost'
 
   initialize: (attribs) ->
+    $(@el).unbind("click")
     console.dir attribs
     if attribs
       @model = new Daltoniam.Models.Post(attribs)
@@ -17,7 +18,7 @@ class Daltoniam.Views.NewPostView extends Backbone.View
     if @model
       @$el.html @template.render(@model.attributes)
       $(".createBtn").html("Edit Post")
-      $("h3").html("Edit Post")
+      $(".mainHeader").html("Edit Post")
     else
       @$el.html @template.render()
     editor = new MediumEditor('.editable', buttons: ['bold','italic','underline','anchor','header1','header2','quote','pre','unorderedlist'])

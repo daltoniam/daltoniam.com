@@ -15,6 +15,7 @@ class Daltoniam.Views.BlogPostView extends Backbone.View
     #"click .signinModalBtn" : "goLogin"
 
   initialize: (param) ->
+    $(@el).unbind("click")
     console.log "param is: #{param}"
     console.dir param
     @model = new Daltoniam.Models.Post(param)
@@ -52,7 +53,6 @@ class Daltoniam.Views.BlogPostView extends Backbone.View
       $('.comments').append view.render()
 
     this.doCommentCheck()
-    editor = new MediumEditor('.editable', buttons: ['bold','italic','underline','anchor','header1','header2','quote','pre','unorderedlist'])
 
   doCommentCheck: ->
     userRole = $.cookie('role')
@@ -62,6 +62,7 @@ class Daltoniam.Views.BlogPostView extends Backbone.View
       $('.addComment').html commentView.render()
     else
       $('.addComment').html "<p class='postText'><span class='anchorText signin'>Sign in</span> or <span class='anchorText signup'>Sign up</span> to comment</p>"
+    editor = new MediumEditor('.editable', buttons: ['bold','italic','underline','anchor','header1','header2','quote','pre','unorderedlist'])
 
   addComment: (e) ->
     e.preventDefault()
@@ -104,7 +105,8 @@ class Daltoniam.Views.BlogPostView extends Backbone.View
 
   goSignout: ->
     console.log "no more user"
-    $.removeCookie('role');
+    $.removeCookie('role', { path: '/' })
+    $.removeCookie('role')
     $.ajax({
     url: '/1/sessions',
     type: 'DELETE'
@@ -120,25 +122,39 @@ class Daltoniam.Views.BlogPostView extends Backbone.View
 
       )
       .fail((data) =>
-        $('#signInModal').modal('hide')
-        this.loginFailed()
+          $('#alert-messages-signup').html('<div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <p>Error: Invalid username or password</p>
+        </div>')
       )
 
   registerSignUp: (e) ->
     e.preventDefault()
-    $.post('/1/users', @$('#signUpForm').serialize())
+    $.post('/1/users', @$('#signUpForm').serialize(),dataType: 'json')
       .done((data) =>
         this.goLogin(data)
         $('#signUpModal').modal('hide')
       )
       .fail((data) =>
-        $('#signUpModal').modal('hide')
-        this.loginFailed()
+        response = JSON.parse(data.responseText)
+        errors = ""
+        errors += this.getErrors("email",response.messages)
+        errors += this.getErrors("name",response.messages)
+        errors += this.getErrors("password",response.messages)
+        $('#alert-messages').html("<div class='alert alert-danger alert-dismissable'>
+        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+        <p>Errors:</p>
+        #{errors}
+        </div>")
       )
 
-  loginFailed: ->
-    #do some kind of login failure here
-    console.log "Bummer some cool error handling here."
+  getErrors: (errorKey, messages) ->
+    errs = messages[errorKey]
+    collect = ""
+    if errs
+      for error in errs
+        collect += "<p>#{errorKey}: #{error}</p>"
+    collect
 
   goLogin: (data) ->
     $.cookie('role', data.response.role)
