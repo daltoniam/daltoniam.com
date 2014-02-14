@@ -28,11 +28,10 @@ group :doc do
 end
 
 group :development do
-  gem 'capistrano-rails', '~> 1.1.0'
-  gem 'capistrano-rvm'
   gem 'capistrano'
-  gem 'rvm1-capistrano3', require: false
-  gem 'capistrano3-puma'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
+  gem 'capistrano-rails'
 end
 
 group :development, :test do
