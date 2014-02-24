@@ -1,15 +1,17 @@
-ROOT = File.dirname(__FILE__)
+ROOT = "/var/www/daltoniam/shared"
+rails_env = ENV['RAILS_ENV'] || 'production'
 puts ROOT
 
 God.watch do |w|
   w.dir           = ROOT
+  w.env = { 'RAILS_ENV' => rails_env }
   w.name          = "puma"
   w.interval      = 60.seconds
-  w.start         = "bundle exec puma -C /var/www/daltoniam/shared/puma.rb"
-  w.stop          = "kill -s TERM $(cat puma.pid)"
-  w.restart       = "kill -s USR2 $(cat puma.pid)"
-  w.pid_file      = "/var/www/daltoniam/shared/pids/puma.pid"
-  w.log           = "/var/www/daltoniam/shared/log/puma.log"
+  w.start         = "cd /var/www/daltoniam/current && bundle exec puma -b unix://#{ROOT}/tmp/sockets/puma.sock -q --pidfile #{ROOT}/tmp/pids/puma.pid -e #{rails_env}"
+  w.stop          = "kill -TERM `cat #{ROOT}/tmp/pids/puma.pid`"
+  w.restart       = "kill -USR2 `cat #{ROOT}/tmp/pids/puma.pid`"
+  w.pid_file      = "#{ROOT}/tmp/pids/puma.pid"
+  w.log           = "#{ROOT}/log/puma.log"
   w.start_grace   = 20.seconds
   w.restart_grace = 20.seconds
 
