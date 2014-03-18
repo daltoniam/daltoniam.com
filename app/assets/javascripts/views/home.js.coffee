@@ -3,7 +3,7 @@ class Daltoniam.Views.HomeView extends Backbone.View
   el: "#app"
 
   events: 
-    "click .blogCircle" : "goBlog"
+    #"click .blogCircle" : "goBlog"
     "click .resumeCircle" : "goResume"
     "click .aboutCircle" : "goAbout"
     "click .projectCircle" : "goProject"
