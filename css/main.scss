@@ -1,0 +1,165 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+
+
+// Our variables
+$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-size:   16px;
+$base-font-weight: 400;
+$small-font-size:  $base-font-size * 0.875;
+$base-line-height: 1.5;
+
+$spacing-unit:     30px;
+
+$text-color:       #111;
+$background-color: #ECEADD;
+$brand-color:      #2a7ae2;
+
+$grey-color:       #828282;
+$grey-color-light: lighten($grey-color, 40%);
+$grey-color-dark:  darken($grey-color, 25%);
+
+$white-color:       #fff;
+$black-color:       #000;
+
+// Width of the content area
+$content-width:    1000px;
+
+$on-palm:          600px;
+$on-laptop:        800px;
+
+$big-circle-size:    240px;
+$sm-circle-size:     100px;
+
+
+@mixin media-query($device) {
+    @media screen and (max-width: $device) {
+        @content;
+    }
+}
+
+@mixin hover-color($color) {
+    background: $color;
+    	&:hover {
+    		background: darken($color, 20%); 
+    	}
+}
+
+.circle {
+	width:  $big-circle-size;
+	height: $big-circle-size;
+    @include media-query($on-palm) {
+    	width:  $sm-circle-size;
+    	height: $sm-circle-size;
+    }
+	border-radius: 50%;
+    text-align: center;
+//    margin: auto auto;
+}
+
+.iconCenter {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+}
+
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+	height: $big-circle-size + 100px;
+    @include media-query($on-palm) {
+    	height:  $sm-circle-size + 40px;
+    }
+}
+
+.flex-left {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    -webkit-align-items: center;
+    align-items: center;
+    margin-bottom: 30px;
+//    height: $big-circle-size + 40px;
+//    @include media-query($on-palm) {
+//        height:  $sm-circle-size + 20px;
+//    }
+}
+
+.vluxeColor {
+    @include hover-color(#8e44ad);
+}
+
+.emailColor {
+    @include hover-color(#7f8c8d);
+}
+
+.githubColor {
+    @include hover-color(#F3F3F3);
+}
+
+.twitterColor {
+    @include hover-color(#00ACEE);
+}
+
+.dribbbleColor {
+    @include hover-color(#ea4c89);
+}
+
+.resumeColor {
+    @include hover-color(#C0392B);
+}
+
+.githubColor {
+    @include hover-color(#F3F3F3);
+}
+
+.linkedinColor {
+    @include hover-color(#F1C40F);
+}
+
+.aboutColor {
+    @include hover-color(#16a085);
+}
+
+.mainText {
+    font-weight: bold;
+    font-size: 24px;
+    @include media-query($on-palm) {
+    	font-size:  14px;
+    }
+}
+
+.aboutText {
+    margin-left: 60px;
+    font-weight: bold;
+    font-size: 30px;
+    @include media-query($on-palm) {
+    	font-size:  20px;
+    }
+}
+
+.home-logo {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  font-size: 30px;
+  color: #000;
+  overflow: hidden;
+  z-index: 99;
+}
+
+// Import partials from `sass_dir` (defaults to `_sass`)
+@import
+        "base",
+        "layout",
+        "syntax-highlighting"
+;
